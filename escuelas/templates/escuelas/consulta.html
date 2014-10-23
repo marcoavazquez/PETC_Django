@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<p>
+Ingrese la clave de la escuela o el RFC del personal según sea el caso
+    <form action="">
+    <label for="consulta">Buscar por</label>
+        <select name="consulta">
+            <option value="escuela">Escuela</option>
+            <option value="personal">Personal</option>
+        </select>
+    <input type="text" name="consulta">
+    <input type="submit" value="Buscar">
+    </form>
+</p>
+{% endblock content %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<ul class="lista-escuela">
+<li class="fila">
+    <ul class="encabezado">
+        <li class="item-esc">RFC</li>
+        <li class="item-esc">Nombre</li>
+        <li class="item-esc">¿Doble plaza?</li>
+        <li class="item-esc">fecha de ingreso</li>
+        <li class="item-esc">fecha de nacimiento</li>
+        <li class="item-esc">Nivel de estudios</li>
+        <li class="item-esc">Especialidad</li>
+        <li>-</li>
+    </ul>
+</li>
+{% for personal in object_list %}
+<li class="fila">
+    <ul class="resultado">
+        <li class="item-esc">
+            {{personal.rfc}}
+        </li>
+        <li class="item-esc">
+            {{personal.nombre}}
+            {{personal.apellido_paterno}}
+            {{personal.apellido_materno}}
+        </li>
+        <li class="item-esc">
+            {{personal.dos_plaza}}
+        </li>
+        <li class="item-esc">
+            {{personal.fecha_ingreso}}
+        </li>
+        <li class="item-esc">
+            {{personal.fecha_nacimiento}}
+        </li>
+        <li class="item-esc">
+            {{personal.nivel_estudio}}
+        </li>
+        <li class="item-esc">
+            {{personal.especialidad}}
+        </li>
+        <li>
+            <a href="#">Más Datos...</a>
+        </li>
+    </ul>
+</li>
+{% empty %}
+No existe esta escuela o no se ha dado de alta
+{% endfor %}
+</ul>
+{% endblock content %}

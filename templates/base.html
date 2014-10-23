@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static from staticfiles %}
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <title>
+        {% block title %}
+        Inicio | Escuelas de Tiempo Completo Veracruz
+        {% endblock title %}
+    </title>
+</head>
+<body>
+<header>
+    <h1>
+        Escuelas de Tiempo Completo
+    </h1>
+    <h2>
+        Sistemas para hacer muchas, pero muchas cosas
+    </h2>
+    <nav>
+        {% if user.is_authenticated %}
+        <ul class="menu-2">
+            <li><a href="/admin/">Administrar</a></li>
+            <li><a href="{% url 'salir' %}">({{user}})Salir</a></li>
+        </ul>
+            <ul class="menu">
+                <li class="item"><a href="">Reportes</a></li>
+                <li class="item"><a href="">Filtrar</a></li>
+            </ul>
+
+        {% endif%}
+    </nav>
+</header>
+<div class="content">
+{% if user.is_authenticated %}
+<div class="forms">
+<form action="{% url 'consulta' %}" class="form-consulta">
+    Ingrese Clave de la escuela o RFC según sea el caso
+    <select name="tipo-busqueda" class="select-consulta">
+        <option value="escuela">Escuela</option>
+        <option value="personal">Personal</option>
+    </select>
+    <input type="text" name="consulta" class="campos-busqueda" placeholder="Clave o RFC">
+    <input type="submit" value="Buscar" class="btn-busca">
+</form>
+<form action="{% url 'consulta' %}" class="form-busqueda">
+    <input type="text" name="busqueda" placeholder="Buscar" class="campos-busqueda">
+    <input type="submit" value="Buscar" class="btn-busca">
+</form>
+</div>
+<section class="cuerpo">
+{% endif %}
+{% block content %}
+{% endblock content %}
+</div>
+</section>
+<footer>
+    <small>
+        Secretaría de Educación Pública<br>
+        Subsecretaría de Educación Básica<br>
+        Programa Estatal Escuelas de Tiempo Completo, Xalapa, Ver. 2014
+    </small>
+</footer>
+<script src="{% static "js/index.js" %}"></script>
+</body>
+</html>

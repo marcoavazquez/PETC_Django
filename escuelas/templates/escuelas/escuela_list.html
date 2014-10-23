@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<ul class="lista-escuela">
+<li class="fila">
+    <ul class="encabezado">
+        <li class="item-esc">Clave</li>
+        <li class="item-esc">Nombre</li>
+        <li class="item-esc">Localidad</li>
+        <li class="peque">Zona</li>
+        <li class="peque">Sector</li>
+        <li class="item-esc">Modalidad</li>
+        <li class="item-esc">Nivel</li>
+        <li class="item-esc">Teléfono</li>
+        <li>-</li>
+    </ul>
+</li>
+{% for escuela in object_list %}
+<li class="fila">
+    <ul class="resultado">
+        <li class="item-esc">
+            {{escuela.clave}}
+        </li>
+        <li class="item-esc">
+            {{escuela.nombre}}
+        </li>
+        <li class="item-esc">
+            {{escuela.localidad}}
+        </li>
+        <li class="peque">
+            {{escuela.zona}}
+        </li>
+        <li class="peque">
+            {{escuela.sector}}
+        </li>
+        <li class="item-esc">
+            {{escuela.modalidad}}
+        </li>
+        <li class="item-esc">
+            {{escuela.nivel}}
+        </li>
+        <li class="item-esc">{{escuela.telefono}}</li>
+        <li>
+            <a href="#">Mas Datos...</a>
+        </li>
+    </ul>
+</li>
+{% empty %}
+No existe esta escuela o no se ha dado de alta
+{% endfor %}
+</ul>
+{% endblock content %}
