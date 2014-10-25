@@ -11,6 +11,7 @@
         <li class="item-esc">Modalidad</li>
         <li class="item-esc">Nivel</li>
         <li class="item-esc">Teléfono</li>
+        <li class="peque">¿Activa?</li>
         <li>-</li>
     </ul>
 </li>
@@ -39,8 +40,10 @@
             {{escuela.nivel}}
         </li>
         <li class="item-esc">{{escuela.telefono}}</li>
+        <li class="peque">{{escuela.esta_afiliada}}
+        </li>
         <li>
-            <a href="#">Mas Datos...</a>
+            <a href="{% url 'detalle-escuela' escuela.clave escuela.id %}">Mas Datos...</a>
         </li>
     </ul>
 </li>

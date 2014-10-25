@@ -1,6 +1,12 @@
 from django.db import models
 from lugares.models import Municipio, Localidad
 from caracteristicas.models import Nivel, Modalidad
+from petc.settings import CICLO_ACTUAL
+
+class EscuelaQuerySet(models.QuerySet):
+
+    def afiliada(self):
+        return self.filter(afiliada=True)
 
 
 class Escuela(models.Model):
@@ -20,6 +26,14 @@ class Escuela(models.Model):
     cod_postal = models.PositiveIntegerField()
     afiliada = models.BooleanField(default=False)
 
+    objects = EscuelaQuerySet.as_manager()
+
+    def esta_afiliada(self):
+        if self.afiliada:
+            return "Si"
+        else:
+            return "No"
+
     def __unicode__(self):
         return self.clave
 
@@ -33,7 +47,7 @@ class Ciclo(models.Model):
         return fin
 
     def __unicode__(self):
-        return "%i - %i" % (self.ciclo, self.fin_ciclo())
+        return "%i-%i" % (self.ciclo, self.fin_ciclo())
 
 
 class EscuelasPorCiclo(models.Model):
@@ -43,5 +57,14 @@ class EscuelasPorCiclo(models.Model):
     class Meta:
         unique_together = [("ciclo", "escuela")]
 
+    def es_ciclo_actual(self):
+        if self.ciclo.ciclo == CICLO_ACTUAL:
+            return True
+        else:
+            return False
+
+    def anho_ciclo(self):
+        return self.ciclo.ciclo
+
     def __unicode__(self):
-        return "%s (%s)" % (self.escuela, self.ciclo)
+        return "%s(%s)" % (self.escuela, self.ciclo)

@@ -1,6 +1,7 @@
 from django.db import models
 from escuelas.models import Ciclo, Escuela
 
+
 class NivelEstudio(models.Model):
     nivel_estudio = models.CharField(max_length=255)
 
@@ -60,6 +61,10 @@ class PersonalPorCiclo(models.Model):
 
     class Meta:
         unique_together = [("personal", "ciclo", "escuela")]
+
+    def get_absolute_url(self):
+        url = "/escuelas/%s/%s/" % (self.escuela.clave, self.ciclo)
+        return url
 
     def __unicode__(self):
         return "%s - %s - %s" % (self.personal, self.escuela, self.ciclo)

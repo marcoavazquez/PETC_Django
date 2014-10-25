@@ -1,6 +1,7 @@
 from django.views import generic
 from .models import Personal
 
+
 class PersonalView(generic.ListView):
     model = Personal
     template_name = "personal/personal.html"

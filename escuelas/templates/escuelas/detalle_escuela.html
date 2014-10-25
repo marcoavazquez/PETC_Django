@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<p class="escuela">
+  {% for e in schooll %}
+  <h3>{{e.escuela.clave}} -
+  {{e.escuela.nombre}}<br>
+  </h3>
+  <p>
+  Zona: {{e.escuela.zona}}
+  Sector: {{e.escuela.sector}}<br>
+  Modalidad: {{e.escuela.modalidad}}
+  Nivel: {{e.escuela.nivel}}
+  </p>
+  <p>
+  Ubicación:<br>
+  {{e.escuela.calle}} {{e.escuela.numero}} Col: {{e.escuela.colonia}}
+  C.P.: {{escuela.cod_postal}}<br>
+  {{e.escuela.localidad.localidad}} {{e.escuela.municipio}}
+  </p>
+  <p>
+  CONTACTO<br>
+  Teléfono: {{e.escuela.telefono}}
+  Correo electrónico: {{e.escuela.email}}
+  </p>
+  {% endfor %}
+</p>
+<p class="personal">
+    <h3>Personal:</h3>
+    {% for p in object_list %}
+      <p>
+      <strong>
+        {{p.puesto.puesto}}:
+      </strong>
+      {{p.personal.nombre}}
+      {{p.personal.apellido_paterno}}
+      {{p.personal.apellido_materno}}
+      <br>
+
+      </p>
+      <a href="">Más Información</a>
+    {% endfor %}
+</p>
+{% endblock content %}

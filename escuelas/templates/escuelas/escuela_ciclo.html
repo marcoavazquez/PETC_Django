@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<div>Escuelas afiliadas al programa actualmente</div>
+    <ul class="lista-escuela">
+        <li class="fila">
+            <ul class="encabezado">
+                <li class="item-esc">Clave</li>
+                <li class="item-esc">Nombre</li>
+                <li class="item-esc">Localidad</li>
+                <li class="peque">Zona</li>
+                <li class="peque">Sector</li>
+                <li class="item-esc">Modalidad</li>
+                <li class="item-esc">Nivel</li>
+                <li>-</li>
+            </ul>
+        </li>
+    {% for esc in object_list  %}
+        {% if esc.escuela.afiliada %}
+            {% if esc.es_ciclo_actual %}
+            <li class="fila">
+                <ul class="resultado">
+                    <li class="item-esc">
+                        {{esc.escuela.clave}}
+                    </li>
+                    <li class="item-esc">
+                        {{esc.escuela.nombre}}
+                    </li>
+                    <li class="item-esc">
+                        {{esc.escuela.localidad}}
+                    </li>
+                    <li class="peque">
+                        {{esc.escuela.zona}}
+                    </li>
+                    <li class="peque">
+                        {{esc.escuela.sector}}
+                    </li>
+                    <li class="item-esc">
+                        {{esc.escuela.modalidad}}
+                    </li>
+                    <li class="item-esc">
+                        {{esc.escuela.nivel}}
+                    </li>
+                    <li>
+                        <a href="#">Mas Datos...</a>
+                    </li>
+                </ul>
+            </li>
+            {% endif %}
+        {% endif %}
+    {% empty %}
+    No se ha dado de alta el ciclo escolar o no existen escuelas en él
+    {% endfor %}
+{% endblock content %}

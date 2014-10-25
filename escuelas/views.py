@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
-from .models import Escuela
+from .models import Escuela, EscuelasPorCiclo
+from personal.models import PersonalPorCiclo
 
 
 class HomeView(generic.TemplateView):
@@ -12,24 +13,49 @@ class EscuelasView(generic.ListView):
     template_name = "escuelas/escuela_list.html"
 
     def get_queryset(self):
-        if self.kwargs.get('clave'):  #variable donde estan lo que se envia por url
+        if self.kwargs.get("clave"):
             queryset = self.model.objects.filter(clave=self.kwargs['clave'])
         else:
             queryset = super(EscuelasView, self).get_queryset()
 
         return queryset
 
-
 class ConsultaView(generic.RedirectView):
-
 
     def get_redirect_url(self):
         tipo = self.request.GET.get("tipo-busqueda", None)
         consulta = self.request.GET.get("consulta", None)
         if tipo == "escuela":
-            url = "/escuelas/%s" % consulta
+            url = "/escuelas/%s/" % consulta
         elif tipo == "personal":
-            url = "/personal/%s" % consulta
+            url = "/personal/%s/" % consulta
         else:
             url = "/"
         return url
+
+
+class EscuelaCicloView(generic.ListView):
+    model = EscuelasPorCiclo
+    template_name = "escuelas/escuela_ciclo.html"
+
+
+class EscuelaPersonalView(generic.ListView):
+    model = PersonalPorCiclo
+    template_name = "escuelas/detalle_escuela.html"
+
+    def get_queryset(self):
+        id_escuela = self.kwargs.get("escuela")
+        queryset = self.model.objects.filter(escuela=id_escuela)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super(EscuelaPersonalView, self).get_context_data(**kwargs)
+        datos = self.model.objects.filter(escuela=self.kwargs.get("escuela"))[:1]
+
+        datos_escuela = {
+            'schooll': datos
+        }
+
+        context.update(datos_escuela)
+
+        return context

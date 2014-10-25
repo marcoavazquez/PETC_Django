@@ -91,3 +91,5 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), '/static/',)
 STATIC_URL = '/static/'
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, "templates")]
+
+CICLO_ACTUAL = 2012
