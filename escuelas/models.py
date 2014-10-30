@@ -3,6 +3,7 @@ from lugares.models import Municipio, Localidad
 from caracteristicas.models import Nivel, Modalidad
 from petc.settings import CICLO_ACTUAL
 
+
 class EscuelaQuerySet(models.QuerySet):
 
     def afiliada(self):

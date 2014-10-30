@@ -35,10 +35,8 @@
       {{p.personal.nombre}}
       {{p.personal.apellido_paterno}}
       {{p.personal.apellido_materno}}
-      <br>
-
+      <small><a href="{% url 'personal' p.personal.rfc %}">Más Información</a></small>
       </p>
-      <a href="">Más Información</a>
     {% endfor %}
 </p>
 {% endblock content %}

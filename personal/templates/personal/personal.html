@@ -1,5 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
+
+{% for personal in object_list %}
+{% if detalle %}
+    <strong>Nombre: </strong>{{personal.nombre}} {{personal.apellido_paterno}}
+            {{personal.apellido_materno}}
+    <strong>RFC: </strong>{{personal.rfc}}<br>
+    <strong>Fecha de nacimiento: </strong>{{personal.fecha_nacimiento}}
+    <p>
+        <strong>Fecha de ingreso: </strong>{{personal.fecha_ingreso}}<br>
+        <strong>Nivel de estudios: </strong>{{personal.nivel_estudio}}
+        <strong>Especialidad: </strong> {{personal.especialidad}}<br>
+        <strong>Posee doble plaza: </strong>{{personal.dos_plaza}}
+    </p>
+    <p>
+        {% for esc in schooll %}
+            Labora en la escuela
+            <strong><a href="{% url 'detalle-escuela' esc.escuela.clave esc.escuela.id %}">
+                {{esc.escuela.nombre}}</a></strong>
+            como <strong>{{esc.puesto}}</strong>
+            en <strong>{{esc.escuela.localidad}}</strong>
+        {% endfor %}
+    </p>
+{% else %}
 <ul class="lista-escuela">
 <li class="fila">
     <ul class="encabezado">
@@ -7,13 +30,11 @@
         <li class="item-esc">Nombre</li>
         <li class="item-esc">¿Doble plaza?</li>
         <li class="item-esc">fecha de ingreso</li>
-        <li class="item-esc">fecha de nacimiento</li>
         <li class="item-esc">Nivel de estudios</li>
         <li class="item-esc">Especialidad</li>
         <li>-</li>
     </ul>
 </li>
-{% for personal in object_list %}
 <li class="fila">
     <ul class="resultado">
         <li class="item-esc">
@@ -31,19 +52,17 @@
             {{personal.fecha_ingreso}}
         </li>
         <li class="item-esc">
-            {{personal.fecha_nacimiento}}
-        </li>
-        <li class="item-esc">
             {{personal.nivel_estudio}}
         </li>
         <li class="item-esc">
             {{personal.especialidad}}
         </li>
         <li>
-            <a href="#">Más Datos...</a>
+            <a href="{% url 'personal' personal.rfc %}">Más Datos...</a>
         </li>
     </ul>
 </li>
+{% endif %}
 {% empty %}
 No existe esta escuela o no se ha dado de alta
 {% endfor %}

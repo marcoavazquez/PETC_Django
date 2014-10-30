@@ -28,7 +28,6 @@
                 <li class="item"><a href="">Reportes</a></li>
                 <li class="item"><a href="">Filtrar</a></li>
             </ul>
-
         {% endif%}
     </nav>
 </header>
@@ -44,7 +43,8 @@
     <input type="text" name="consulta" class="campos-busqueda" placeholder="Clave o RFC">
     <input type="submit" value="Buscar" class="btn-busca">
 </form>
-<form action="{% url 'consulta' %}" class="form-busqueda">
+
+<form action="" class="form-busqueda">
     <input type="text" name="busqueda" placeholder="Buscar" class="campos-busqueda">
     <input type="submit" value="Buscar" class="btn-busca">
 </form>

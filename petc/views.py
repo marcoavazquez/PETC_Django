@@ -8,7 +8,7 @@ class LoginView(generic.FormView):
 
     form_class = AuthenticationForm
     template_name = "login.html"
-    success_url = "/home/"
+    success_url = "/"
     form_class.error_messages = {
         'invalid_login': ("Datos incorrectos, intente de nuevo"),
         'inactive': ("This account is inactive."),
