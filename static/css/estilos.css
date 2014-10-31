@@ -1,171 +1,174 @@
 body{
-    background: white;
-    font-size: 16px;
-    font-family: 'consolas';
-    margin: 0px;
-}
-
-header{
-    background: #ddd;
-    margin: 0px;
-    text-align: center;
-}
-
-footer{
     background: black;
-    border: 1px solid green;
-    color: green;
-    font-size: 0.8em;
+    margin: 0px;
+    font-family: 'monospace';
+    font-size: 16px;
+}
+header{
+    background: #222222;
+    color:white;
     text-align: center;
 }
-footer:hover{
-    color:red;
+h1,h2{
+    margin:0px;
 }
-h1{
-    padding-top: 0.4em;
-}
-h1, h2{
-    color:#555;
-    font-family: "Caviar Dreams";
-    margin: 0px;
-}
-
 a{
-    font-family: 'monospace'
+    text-decoration: none;
 }
-.cuerpo{
-    padding-top: 1em;
-    padding-left: 0.2em;
+footer{
+    color:orange;
+    background: #1A1A1A;
+    padding: 1em;
+    text-align: center;
 }
-.content{
+.contenido{
+    background: black;
+    color: white;
+    margin-top: 0px;
     margin: 0px auto;
     max-width: 80em;
+    padding-top:1em;
+    padding-bottom: 1em;
     width: 100%;
 }
-.form-sesion{
-    padding: 3em;
-    margin: 0px auto;
-    width: 24em;
+.lnk{
+    color:orange;
 }
-.campos-texto{
-    background: white;
-    border: 1px solid gray;
-    border-radius: 25px;
-    font-size: 1.2em;
-    height: 2em;
-    text-align: center;
-    width: 20em;
-}
-.btn-submit{
-    background: #AAFFAA;
-    border: 1px solid green;
-    border-radius: 25px;
-    font-family: monaco;
-    height: 2.5em;
-    width: 29.1em;
+.lnk:hover{
+    color:red;
 }
 .user{
-    color:blue;
+    color:#5555FF;
 }
-.menu{
-    border:1px solid gray;
-    list-style: none;
-    margin: 0px;
-    padding: 0.3em;
+.form-sesion{
     text-align: center;
-    width: 98.5%;
 }
-.item{
+.campos-texto{
+    color:red;
+    background: black;
+    border:none;
+    border-bottom: 1px solid white;
+    font-family: monaco;
+    font-size: 1.3em;
+    text-align: center;
+}
+.btn-submit{
+    background: #111111;
+    border: 1px solid #00FF00;
+    color:white;
+    padding: 0.8em;
+    width: 20%;
+}
+.nav{
+    background: #BABABA;
+}
+.item-menu,.item-usr{
     display: inline-block;
 }
-.item a{
-    color: black;
-    padding: 0.4em 1em 0.4em 1em;
-    text-decoration: none;
+.item-menu{
+    padding: 0.8em;
 }
-.item a:hover{
-    border-top: 1px solid gray;
-    border-bottom: 2px solid gray;
+.item-menu a{
+    color:black;
+    padding: 0.8em;
 }
-.item a:active{
-    color: gray;
-}
-.menu-2{
-    margin: 0px;
-    position: absolute;
-    right: 1em;
-    top: 0em;
-}
-.menu-2 li{
-    text-align: center;
-    display: inline-block;
-}
-.menu-2 li a{
-    color: red;
-    text-decoration: none;
-    font-size: 0.8em;
-}
-.menu-2 li a:hover{
-    border-top: 2px solid red;
-    border-bottom: 2px solid red;
-    }
+.item-menu a:hover{
+    background: black;
+    color:white;
 
-.lista-escuela li{
+}
+.item-usr{
+    color:gray;
+    padding-left: 9em;
+}
+.item-usr a{
+    color:red;
+}
+.item-usr a:hover{
+    border-bottom: 1px solid red;
+}
+
+.form-consulta{
+    color:yellow;
+}
+.form-b{
+    float:right;
+}
+.cont-forms{
+    border-bottom: 1px solid gray;
+    padding-bottom: 1em;
+    padding-right: 1em;
+    padding-left: 1em;
+}
+.fms{
     display: inline-block;
 }
-.peque{
-    border-right: 1px solid gray;
-    width: 4em;
+.slct{
+    background: #1111AA;
+    border:1px solid gray;
+    color:white;
+    font-family: "consolas";
+    height: 2.5em;
+    margin:0px;
+    width: 10em;
 }
-.encabezado{
-    border-bottom: 1px solid black;
-    font-weight: bold;
-}
-.encabezado li{
+.cmp-text{
+    background: #121212;
+    border:none;
+    border: 2px solid #1111AA;
+    color:red;
+    font-family: 'consolas';
+    height: 2.4em;
     text-align: center;
 }
-.resultado{
-    border-bottom: 1px solid gray;
+
+.btn{
+    background: #1111AA;
+    border:1px solid gray;
+    color:white;
+    font-family: "andale mono";
+    height: 2.5em;
+    width: 6em;
 }
-.resultado li{
-    text-align: center;
+.cab{
+    background: #123456;
 }
-.fila{
-    width: 100%;
+.cab th{
+    padding: 0.4em;
 }
 .item-esc{
+    text-align: center;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid gray;
     border-right: 1px solid gray;
-    width: 10%;
 }
-.forms{
-    background: #FAFAFA;
-    color:#444;
-    font-family: 'ubuntu';
-    margin: 0.1em;
-    width: 100%;
-}
-.form-consulta{
+.mas{
+    background: blue;
+    border: 1px solid white;
+    color:#FF5555;
     font-size: 0.8em;
+    padding: 0.4em;
 }
-.form-busqueda{
-    float: right;
+.mas:hover{
+    background: white;
+    color:red;
 }
-.campos-busqueda{
-    height: 1.5em;
-    margin: 0px;
-}
-.btn-busca{
-    background: #DDD;
-    border: 1px solid gray;
-    color: #555;
-    margin: 0px;
-    padding: 0.3em;
-}
-.select-consulta{
-    background: #DDD;
-    height: 1.9em;
-    margin: 0px;
+.personal{
+    background: #212121;
+    padding: 0.5em;
 }
 .escuela{
-    background: #FAFFFA;
+    background: #111111;
+    padding: 0.2em;
+}
+.pers{
+    background: #222222;
+    padding: 0.2em;
+}
+.a-esc{
+    color:red;
+}
+.error{
+    color:red;
 }

@@ -3,7 +3,7 @@
 Bienvenido
     <span class="user">{{user}}</span>
     {% if not user.is_authenticated %}
-        Inicie sesión <strong><a href="/login/">Aquí</a></strong>
+        Inicie sesión <strong><a href="/login/" class="lnk">Aquí</a></strong>
     {% endif %}
 <br>
 <p>
@@ -26,6 +26,6 @@ Bienvenido
     En <b>Reportes</b> mostraré algunos filtros que podrían ser utiles con la
     opción de imprimir en PDF.
 </p>
-
-
+<br>
+Y por el momento esto es todo...
 {% endblock content %}

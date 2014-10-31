@@ -1,32 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
-
-<p class="escuela">
+<div class="escuela">
   {% for e in schooll %}
-  <h3>{{e.escuela.clave}} -
-  {{e.escuela.nombre}}<br>
-  </h3>
+  Escuela <i>{{e.escuela.nivel}}</i> <strong>{{e.escuela.nombre}}</strong><br>
+  Clave: {{e.escuela.clave}}
   <p>
-  Zona: {{e.escuela.zona}}
-  Sector: {{e.escuela.sector}}<br>
-  Modalidad: {{e.escuela.modalidad}}
-  Nivel: {{e.escuela.nivel}}
+  <strong>Zona:</strong> {{e.escuela.zona}},
+  <strong>Sector: </strong>{{e.escuela.sector}},
+  <strong>Modalidad: </strong>{{e.escuela.modalidad}}
   </p>
   <p>
-  Ubicación:<br>
+  <strong>Dirección:</strong><br>
   {{e.escuela.calle}} {{e.escuela.numero}} Col: {{e.escuela.colonia}}
   C.P.: {{escuela.cod_postal}}<br>
   {{e.escuela.localidad.localidad}} {{e.escuela.municipio}}
   </p>
   <p>
-  CONTACTO<br>
+  <strong>Contacto</strong><br>
   Teléfono: {{e.escuela.telefono}}
   Correo electrónico: {{e.escuela.email}}
   </p>
   {% endfor %}
-</p>
-<p class="personal">
-    <h3>Personal:</h3>
+  </div>
+<p>
+    <h3>Personal Docente:</h3>
+<div class="personal">
     {% for p in object_list %}
       <p>
       <strong>
@@ -35,8 +33,9 @@
       {{p.personal.nombre}}
       {{p.personal.apellido_paterno}}
       {{p.personal.apellido_materno}}
-      <small><a href="{% url 'personal' p.personal.rfc %}">Más Información</a></small>
+      <small><a href="{% url 'personal' p.personal.rfc %}" class="mas">Más Información</a></small>
       </p>
     {% endfor %}
+    </div>
 </p>
 {% endblock content %}

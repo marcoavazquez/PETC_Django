@@ -3,7 +3,7 @@
 <head>
     {% load static from staticfiles %}
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+    <link rel="stylesheet" href="{% static "css/estilos.css" %}">
     <title>
         {% block title %}
         Inicio | Escuelas de Tiempo Completo Veracruz
@@ -11,46 +11,50 @@
     </title>
 </head>
 <body>
-<header>
+<header class="jumbotron">
     <h1>
         Escuelas de Tiempo Completo
     </h1>
     <h2>
         Sistemas para hacer muchas, pero muchas cosas
     </h2>
-    <nav>
-        {% if user.is_authenticated %}
-        <ul class="menu-2">
-            <li><a href="/admin/">Administrar</a></li>
-            <li><a href="{% url 'salir' %}">({{user}})Salir</a></li>
+    {% if user.is_authenticated %}
+    <nav class="nav">
+        <ul class="menu">
+            <li class="item-menu"><a class="" href="">Reportes</a></li>
+            <li class="item-menu"><a class="" href="">Filtrar</a></li>
+            <li class="item-menu"><a href="/admin/">Administrar</a></li>
+            <li class="item-usr">({{user}})
+            <a class="label label-danger" href="{% url 'salir' %}">Salir</a></li>
         </ul>
-            <ul class="menu">
-                <li class="item"><a href="">Reportes</a></li>
-                <li class="item"><a href="">Filtrar</a></li>
-            </ul>
-        {% endif%}
     </nav>
+    {% endif%}
+
 </header>
-<div class="content">
+<div class="">
 {% if user.is_authenticated %}
-<div class="forms">
-<form action="{% url 'consulta' %}" class="form-consulta">
-    Ingrese Clave de la escuela o RFC según sea el caso
-    <select name="tipo-busqueda" class="select-consulta">
+<div class="cont-forms">
+<form action="{% url 'consulta' %}" class="fms form-consulta">
+    <div class="cont-cf">
+    Buscar por:
+    <select name="tipo-busqueda" class="slct">
         <option value="escuela">Escuela</option>
         <option value="personal">Personal</option>
     </select>
-    <input type="text" name="consulta" class="campos-busqueda" placeholder="Clave o RFC">
-    <input type="submit" value="Buscar" class="btn-busca">
+    <input type="text" name="consulta" class="cmp-text" placeholder="Clave o RFC">
+    <input type="submit" value="Buscar" class="btn">
+    </div>
 </form>
 
-<form action="" class="form-busqueda">
-    <input type="text" name="busqueda" placeholder="Buscar" class="campos-busqueda">
-    <input type="submit" value="Buscar" class="btn-busca">
+<form action="" class="fms form-b">
+<div class="cont-cf">
+    <input type="text" name="busqueda" placeholder="Buscar" class="cmp-text">
+    <input type="submit" value="Buscar" class="btn">
+</div>
 </form>
 </div>
-<section class="cuerpo">
 {% endif %}
+<section class="contenido">
 {% block content %}
 {% endblock content %}
 </div>

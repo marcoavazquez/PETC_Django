@@ -11,18 +11,21 @@ class PersonalView(LoginRequiredMixin, generic.ListView):
         if self.kwargs.get("rfc"):
             queryset = self.model.objects.filter(rfc=self.kwargs['rfc'])
             self.detalle = True
-            self.rfc = self.model.objects.get(rfc=self.kwargs['rfc'])
+            try:
+                rfc = self.model.objects.get(rfc=self.kwargs['rfc'])
+                self.q_esc = PersonalPorCiclo.objects.filter(personal=rfc.id)[:1]
+            except Personal.DoesNotExist:
+                self.q_esc = None
+
         else:
             queryset = super(PersonalView, self).get_queryset()
             self.detalle = False
+            self.q_esc = None
         return queryset
 
     def get_context_data(self, **kwargs):
         context = super(PersonalView, self).get_context_data(**kwargs)
-
-        q_esc = PersonalPorCiclo.objects.filter(personal=self.rfc.id)[:1]
-
-        detalle = {'detalle': self.detalle, 'schooll': q_esc}
+        detalle = {'detalle': self.detalle, 'schooll': self.q_esc}
         context.update(detalle)
 
         return context

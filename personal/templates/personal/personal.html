@@ -1,70 +1,71 @@
 {% extends "base.html" %}
 {% block content %}
-
+{% if not detalle %}
+<table>
+<tr class="fila">
+        <th class="item-esc">RFC</th>
+        <th class="item-esc">Nombre</th>
+        <th class="item-esc">¿Doble plaza?</th>
+        <th class="item-esc">fecha de ingreso</th>
+        <th class="item-esc">Nivel de estudios</th>
+        <th class="item-esc">Especialidad</th>
+        <th>-</th>
+</tr>
+{% endif %}
 {% for personal in object_list %}
 {% if detalle %}
-    <strong>Nombre: </strong>{{personal.nombre}} {{personal.apellido_paterno}}
-            {{personal.apellido_materno}}
+    <div class="pers">
+    <h3>{{personal.nombre}} {{personal.apellido_paterno}}
+            {{personal.apellido_materno}}</h3><br>
     <strong>RFC: </strong>{{personal.rfc}}<br>
     <strong>Fecha de nacimiento: </strong>{{personal.fecha_nacimiento}}
     <p>
         <strong>Fecha de ingreso: </strong>{{personal.fecha_ingreso}}<br>
-        <strong>Nivel de estudios: </strong>{{personal.nivel_estudio}}
+        <strong>Nivel de estudios: </strong>{{personal.nivel_estudio}}<br>
         <strong>Especialidad: </strong> {{personal.especialidad}}<br>
         <strong>Posee doble plaza: </strong>{{personal.dos_plaza}}
+    </div>
     </p>
     <p>
         {% for esc in schooll %}
             Labora en la escuela
-            <strong><a href="{% url 'detalle-escuela' esc.escuela.clave esc.escuela.id %}">
-                {{esc.escuela.nombre}}</a></strong>
+            <a class="a-esc" href="{% url 'detalle-escuela' esc.escuela.clave esc.escuela.id %}">
+                {{esc.escuela.nombre}}
+            </a>
             como <strong>{{esc.puesto}}</strong>
             en <strong>{{esc.escuela.localidad}}</strong>
         {% endfor %}
     </p>
 {% else %}
-<ul class="lista-escuela">
-<li class="fila">
-    <ul class="encabezado">
-        <li class="item-esc">RFC</li>
-        <li class="item-esc">Nombre</li>
-        <li class="item-esc">¿Doble plaza?</li>
-        <li class="item-esc">fecha de ingreso</li>
-        <li class="item-esc">Nivel de estudios</li>
-        <li class="item-esc">Especialidad</li>
-        <li>-</li>
-    </ul>
-</li>
-<li class="fila">
-    <ul class="resultado">
-        <li class="item-esc">
+
+<tr>
+        <td class="item-esc">
             {{personal.rfc}}
-        </li>
-        <li class="item-esc">
+        </td>
+        <td class="item-esc">
             {{personal.nombre}}
             {{personal.apellido_paterno}}
             {{personal.apellido_materno}}
-        </li>
-        <li class="item-esc">
+        </td>
+        <td class="item-esc">
             {{personal.dos_plaza}}
-        </li>
-        <li class="item-esc">
+        </td>
+        <td class="item-esc">
             {{personal.fecha_ingreso}}
-        </li>
-        <li class="item-esc">
+        </td>
+        <td class="item-esc">
             {{personal.nivel_estudio}}
-        </li>
-        <li class="item-esc">
+        </td>
+        <td class="item-esc">
             {{personal.especialidad}}
-        </li>
-        <li>
-            <a href="{% url 'personal' personal.rfc %}">Más Datos...</a>
-        </li>
-    </ul>
-</li>
+        </td>
+        <td>
+            <a href="{% url 'personal' personal.rfc %}" class="mas">Ver</a>
+        </td>
+</tr>
 {% endif %}
 {% empty %}
-No existe esta escuela o no se ha dado de alta
+<span class="error">No existe esta persona o no se ha dado de alta</span>
 {% endfor %}
-</ul>
+</table>
 {% endblock content %}
