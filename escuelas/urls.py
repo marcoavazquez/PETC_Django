@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, url
 from .views import HomeView, EscuelasView, ConsultaView, EscuelaCicloView, EscuelaPersonalView
 from petc.settings import CICLO_ACTUAL
+from rest_framework import routers
 
 urlpatterns = patterns('',
     url(r'^$', HomeView.as_view(), name="home"),

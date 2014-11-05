@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'apoyos',
     'capacitaciones',
     'alumnos',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (

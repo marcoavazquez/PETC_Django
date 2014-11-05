@@ -1,7 +1,8 @@
 from django.views import generic
-from .models import Escuela, EscuelasPorCiclo
+from .models import Escuela, EscuelasPorCiclo, Ciclo
 from personal.models import PersonalPorCiclo
 from petc.mixins import LoginRequiredMixin
+
 
 class HomeView(generic.TemplateView):
     template_name = "escuelas/home.html"
@@ -59,3 +60,17 @@ class EscuelaPersonalView(LoginRequiredMixin, generic.ListView):
         context.update(datos_escuela)
 
         return context
+
+
+#API
+from rest_framework import viewsets
+from serializers import EscuelaSerializer, CicloSerializer
+
+class EscuelasViewSet(viewsets.ModelViewSet):
+    model = Escuela
+    serializer_class = EscuelaSerializer
+
+
+class CicloViewSet(viewsets.ModelViewSet):
+    model = Ciclo
+    serializer_class = CicloSerializer
