@@ -66,6 +66,7 @@ class EscuelaPersonalView(LoginRequiredMixin, generic.ListView):
 from rest_framework import viewsets
 from serializers import EscuelaSerializer, CicloSerializer
 
+
 class EscuelasViewSet(viewsets.ModelViewSet):
     model = Escuela
     serializer_class = EscuelaSerializer
