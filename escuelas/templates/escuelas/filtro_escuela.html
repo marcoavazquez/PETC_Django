@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    Filtrar por:
+    <p>
+    modalidad
+        <select name="" class="slct">
+            <option value="">Todas</option>
+            <option>Federal</option>
+            <option value="">Estatal</option>
+            <option value="">Indígena</option>
+        </select>
+    Nivel
+        <select name="" class="slct">
+            <option value="">Todas</option>
+            <option>Especial</option>
+            <option value="">Primaria</option>
+            <option value="">Secundaria</option>
+        </select>
+    Ordenar por
+    <select name="" class="slct">
+            <option value="">Nombre de escuela</option>
+            <option>Modalidad</option>
+            <option value="">Nivel</option>
+        </select>
+    <input type="submit" class="btn" value="Mostrar resultados">
+    </p>
+
+{% endblock content %}

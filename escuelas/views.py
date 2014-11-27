@@ -62,6 +62,10 @@ class EscuelaPersonalView(LoginRequiredMixin, generic.ListView):
         return context
 
 
+class FiltroEscuela(generic.TemplateView):
+    template_name = "escuelas/filtro_escuela.html"
+
+
 #API
 from rest_framework import viewsets
 from serializers import EscuelaSerializer, CicloSerializer

@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, url
-from .views import HomeView, EscuelasView, ConsultaView, EscuelaCicloView, EscuelaPersonalView
+from .views import HomeView, EscuelasView, ConsultaView, EscuelaCicloView, EscuelaPersonalView, FiltroEscuela
 from petc.settings import CICLO_ACTUAL
 from rest_framework import routers
 
@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     url(r'^consulta/$', ConsultaView.as_view(), name="consulta"),
     url(r'^escuelas/(?P<clave>[\w]+)/detalle-escuela/(?P<escuela>\d+)/$',
         EscuelaPersonalView.as_view(), name="detalle-escuela"),
+    url(r'^filtrar/', FiltroEscuela.as_view(), name="filtro_escuela"),
 )
